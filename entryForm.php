@@ -212,6 +212,14 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
                                     </div>
 
                                     <div class="row">
+                                    <div class=" col-md-3 col-sm-3 col-xs-6">Thumbnil Photo Upload</div>
+                                    <div class=" col-md-9 col-sm-9 col-xs-6"> 
+                                    <input type="file" name="thumbnilFile" >
+                                    </div>
+                                    </div>
+
+
+                                    <div class="row">
                                     <div class=" col-md-3 col-sm-3 col-xs-6">Upload Photos</div>
                                     <div class=" col-md-9 col-sm-9 col-xs-6"> 
                                     <input type="file" name="my_file[]" multiple>
@@ -219,11 +227,12 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
                                     </div>
 
                                     <div class="row">
-                                    <div class=" col-md-3 col-sm-3 col-xs-6">Thumbnil Photo Upload</div>
+                                    <div class=" col-md-3 col-sm-3 col-xs-6">Upload Video</div>
                                     <div class=" col-md-9 col-sm-9 col-xs-6"> 
-                                    <input type="file" name="thumbnilFile" >
+                                    <input type="file" name="videoFile" >
                                     </div>
                                     </div>
+
 
                                     <div class="row">
                                         <div class=" col-md-3">
