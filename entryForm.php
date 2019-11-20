@@ -10,81 +10,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
 ?>
 
 
-<!DOCTYPE html>
-<!--[if IE 9]>
-<html class="ie ie9" lang="en-US">
-<![endif]-->
-<html lang="en-US">
+<?php include("header.php")?>
 
-<!-- Mirrored from cocotemplates.com/html/acropos/contact_us.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Nov 2019 06:43:27 GMT -->
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <meta name="author" content="Car Dealer Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Acropos - Car Dealer HTML5 Template</title>
-
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-
-	<link rel="stylesheet" href="assets/css/bootstrap.css">
-	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- Slider Pro Css -->
-	<link rel="stylesheet" href="assets/css/sliderPro.css">
-	<!-- Owl Carousel Css -->
-	<link rel="stylesheet" href="assets/css/owl-carousel.css">
-	<!-- Flat Icons Css -->
-	<link rel="stylesheet" href="assets/css/flaticon.css">
-	<!-- Animated Css -->
-	<link rel="stylesheet" href="assets/css/animated.css">
-
-
-	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-	<![endif]-->
-
-</head>
-<body>
-
-	
-	
-	<div class="preloader">
-        <div class="preloader-bounce">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-	
- 
-	
-    <header class="site-header wow fadeIn" data-wow-duration="1s">
-        <div id="main-header" class="main-header" style="background-color:#c51313ba">
-            <div class="container clearfix">
-
-                <div id='cssmenu'>
-                    <ul>
-                        <li><a href='index-2.php'>Home</a></li>
-                        <li class='active'><a href='#'>About</a></li>
-                        <li><a href='#'>Map</a></li>
-                        <li><a href='#'>Sponsores</a></li> 
-                        <li><a href='#'>Contact </a></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
-
-    <div class="page-heading wow fadeIn" data-wow-duration="0.5s" > 
-        <div class="container" style="height:400px">
-       
-        </div>
-    </div>
+    
 
     <section style="padding:0px 0px 0px 0px">
     <div class="container" style="margin-bottom:1%" >
@@ -149,7 +77,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
                                 </div>
                                 </div>
     
-                                    <div class="   row">
+                                    <div class="row">
                                         <div class=" col-md-6 col-sm-6 col-xs-6">
                                            <select class="custom-select" id="Make" name="make">
                                                 <option selected>Select Make</option>
@@ -236,23 +164,4 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
  
 	
 
-	<script src="assets/js/jquery-1.11.0.min.js"></script>
-
-	 
-
-	<!-- Boostrap Js -->
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Boostrap Js -->
-    <script src="assets/js/wow.animation.js"></script>
-
-	<!-- Custom Js -->
-    <script src="assets/js/custom.js"></script>
- 
-    <script src="assets/js/jquery.gmap3.min.js"></script>
-
-  
-</body>
-
-<!-- Mirrored from cocotemplates.com/html/acropos/contact_us.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Nov 2019 06:43:29 GMT -->
-</html>
+        <?php include("footer.php"); ?>
