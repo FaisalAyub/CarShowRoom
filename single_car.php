@@ -110,7 +110,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM car WHERE Id=".$carId);
 <br>
 	<div class="recent-car single-car wow fadeIn" data-wow-delay="0.5s" data-wow-duration="1s">
 		<div class="container">
-			<div class="recent-car-content" style="width:40%">
+			<div class="recent-car-content">
 				<div class="row">
 
 				 
@@ -120,7 +120,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM car WHERE Id=".$carId);
 							<div class="sp-slides">
 
 								<div class="sp-slide">
-									<img class="sp-image" src="assets/images/car_slide_1.jpg" alt="" />
+									<img class="sp-image" src="assets/images/car_slide_1.jpg" style="width:1000px" alt="" />
 								</div>
 
 						        <div class="sp-slide">
