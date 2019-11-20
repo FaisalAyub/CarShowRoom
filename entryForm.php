@@ -2,8 +2,7 @@
 <?php
 // Create database connection using config file
 include_once("config.php");
- 
-$carId = $_GET['id'];
+  
 // Fetch all users data from database
 $result = mysqli_query($mysqli, "SELECT * FROM category");
 
