@@ -203,11 +203,21 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
                                             <textarea id="message" class="input" name="description" placeholder="Description..."></textarea>
                                         </div>
                                     </div>
+
                                     <div class="row">
-                                    <div class="col-md-12 col-sm-12">
+                                    <div class=" col-md-3 col-sm-3 col-xs-6">Upload Photos</div>
+                                    <div class=" col-md-9 col-sm-9 col-xs-6"> 
                                     <input type="file" name="my_file[]" multiple>
                                     </div>
                                     </div>
+
+                                    <div class="row">
+                                    <div class=" col-md-3 col-sm-3 col-xs-6">Thumbnil Photo Upload</div>
+                                    <div class=" col-md-9 col-sm-9 col-xs-6"> 
+                                    <input type="file" name="thumbnilFile" >
+                                    </div>
+                                    </div>
+
                                     <div class="row">
                                         <div class=" col-md-3">
                                              
