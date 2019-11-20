@@ -3665,7 +3665,7 @@ footer .sub-footer p a:hover {
 
 
 .checkbox {
-	padding-left: 20px;
+	padding-left: 0px;
   }
   .checkbox label {
 	display: inline-block;
@@ -3836,7 +3836,7 @@ footer .sub-footer p a:hover {
   }
   
   .radio {
-	padding-left: 20px;
+	padding-left: 45px;
   }
   .radio label {
 	display: inline-block;
