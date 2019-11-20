@@ -133,6 +133,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
                                     </div>
 
                                     <div class="row">
+                                    <div class=" col-md-3 col-sm-3 col-xs-6">LocatedSpace</div>
+                                    <div class=" col-md-9 col-sm-9 col-xs-6"> 
+                                    <input type="number" name="LocatedSpace" >
+                                    </div>
+                                    </div>
+
+                                    <div class="row">
                                     <div class=" col-md-3 col-sm-3 col-xs-6">Upload Photos</div>
                                     <div class=" col-md-9 col-sm-9 col-xs-6"> 
                                     <input type="file" name="my_file[]" multiple>

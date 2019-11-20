@@ -7,6 +7,7 @@ $owner = filter_input(INPUT_POST, 'owner');
 $description = filter_input(INPUT_POST, 'description'); 
 $isJuged=filter_input(INPUT_POST, 'isJuged'); 
 $thumbnilFile= $_FILES["thumbnilFile"]["name"]; 
+$LocatedSpace=filter_input(INPUT_POST, 'LocatedSpace'); 
 // $my_file=filter_input(INPUT_POST, 'my_file'); 
 ?>
 
@@ -37,8 +38,8 @@ body{background-color:#f4f9fa}
 <?php 
  
 // Fetch all users data from database
-$temp= "INSERT INTO `car`( `Year`, `Make`, `Model`, `Owner`, `Description`, `LocatedSpace`, `Thumbnil`, `IsJuged`) VALUES ('$year','$make','$model','$owner','$description','0','$thumbnilFile','$isJuged');";
-echo $temp;
+$temp= "INSERT INTO `car`( `Year`, `Make`, `Model`, `Owner`, `Description`, `LocatedSpace`, `Thumbnil`, `IsJuged`) VALUES ('$year','$make','$model','$owner','$description','$LocatedSpace','$thumbnilFile','$isJuged');";
+
 $result = mysqli_query($mysqli,$temp);
 
 if($result){
@@ -75,7 +76,7 @@ if(isset($_FILES["thumbnilFile"]["name"])){
 
 if(!empty($_POST['check_list'])) {
     foreach($_POST['check_list'] as $categoryId) {
-            echo $categoryId; //echoes the value set in the HTML form for each checked checkbox.
+           
             $query="INSERT INTO `carcategory`( `CarId`, `CategoryId`) VALUES ('$carId','$categoryId')";
             $result = mysqli_query($mysqli,$query);
     }
@@ -84,13 +85,13 @@ if(!empty($_POST['check_list'])) {
     echo '<h1>200 -&nbsp;Successfull Saved</h1>';
     
 } else{
-    echo 'Something went wrong'.$result;
+    echo '<h1>500 -&nbsp;Something went wring</h1>'.$result;
 }
 
 
 ?>
 
-
+<a href="index.php">Back to home</a>
 
  </div>
 </div>
