@@ -1,3 +1,18 @@
+
+<?php
+// Create database connection using config file
+include_once("config.php");
+  
+$make = filter_input(INPUT_POST, 'Make');
+$model = filter_input(INPUT_POST, 'Model');
+
+ 
+// Fetch all users data from database
+// $result = mysqli_query($mysqli, "SELECT * FROM car WHERE Id=".$carId);
+
+?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <style type="text/css">
@@ -18,21 +33,14 @@ body{background-color:#f4f9fa}
 <div class="centered">
 <div class="container">
 <div class="header">
-<h1>404 -&nbsp;Not Found</h1>
-<h2>The page you are trying to access does not exist. <br />
-If this error persists, please contact the website webmaster.</h2>
-</div>
-<div class="line"></div>
-<div class="error-container">If you are the webmaster of this site make sure that:
-<br /><br /><ul><li>You have uploaded correctly your files to the public_html directory 
-which is the web-root of your account;
-</li></ul><ul><li>You have not misspelled the URL. Bear in mind that letters are case 
-sensitive and no white spaces are recommended;
-</li></ul><ul><li>In case you have applied SEO - SEF URL rewriting rules, make sure you 
-have re-named the htaccess.txt file to .htaccess. If there is already a 
-non-empty .htaccess file read it and make sure the necessary rules are 
-un-commented.
-</li></ul></div>
+<?php
+
+ echo ' <h2>'.$make.'</h2>'; 
+ echo ' <h2>'.$model.'</h2>'; 
+?>
+<h1>200 -&nbsp;Successfull Saved</h1>
+ 
+ </div>
 </div>
 </div>
 </body></html>

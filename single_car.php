@@ -68,81 +68,54 @@ $result = mysqli_query($mysqli, "SELECT * FROM car WHERE Id=".$carId);
 	    </form>
 	</div>
 	
-	<header class="site-header wow fadeIn" data-wow-duration="1s">
-		<div id="main-header" class="main-header">
-			<div class="container clearfix">
-				 
-				<div id='cssmenu'>
-					<ul>
-					   	<li><a href='index-2.html'>Homepage</a></li>
-					   	<li class='active'><a href='#'>Car Listing</a>
-					      	<ul>
-					         	<li><a href='#'>Sidebar</a>
-					            	<ul>
-					               		<li><a href='car_listing_sidebar.html'>Car Listing</a></li>
-					               		<li><a href='car_grid_sidebar.html'>Car Grid</a></li>
-					            	</ul>
-					        	</li>
-					         	<li><a href='#'>No Sidebar</a>
-					            	<ul>
-					               		<li><a href='car_listing_no_sidebar.html'>Car Listing</a></li>
-					               		<li><a href='car_grid_no_sidebar.html'>Car Grid</a></li>
-					            	</ul>
-					         	</li>
-					         	<li><a href="single_car.html">Single Car</a></li>
-					      	</ul>
-					   	</li>
-					   	<li class='active'><a href='#'>Blog</a>
-					      	<ul>
-					         	<li><a href='#'>Sidebar</a>
-					            	<ul>
-					               		<li><a href='blog_listing_sidebar.html'>Blog Classic</a></li>
-					               		<li><a href='blog_grid_sidebar.html'>Blog Grid</a></li>
-					            	</ul>
-					         	</li>
-					         	<li><a href='#'>No Sidebar</a>
-					            	<ul>
-					               		<li><a href='blog_listing_no_sidebar.html'>Blog Classic</a></li>
-					               		<li><a href='blog_grid_no_sidebar.html'>Blog Grid</a></li>
-					            	</ul>
-					         	</li>
-					         	<li><a href="single_post.html">Single Post</a></li>
-					      	</ul>		
-					   </li>
-					   <li><a href='about_us.html'>About Us</a></li>
-					   <li><a href='contact_us.html'>Contact Us</a></li>
-					   <li>
-					   		<a href="#search"><i class="fa fa-search"></i></a>
-					   </li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</header>
+    <header class="site-header wow fadeIn" data-wow-duration="1s">
+        <div id="main-header" class="main-header" style="background-color:#c51313ba">
+            <div class="container clearfix">
+
+                <div id='cssmenu'>
+                    <ul>
+                        <li><a href='index-2.php'>Home</a></li>
+                        <li class='active'><a href='#'>About</a></li>
+                        <li><a href='#'>Map</a></li>
+                        <li><a href='#'>Sponsores</a></li> 
+                        <li><a href='#'>Contact </a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
 
 
 	<div class="page-heading wow fadeIn" data-wow-duration="0.5s">
-		<div class="container">
+		<div class="container" style="height:400px">
+		 
+		</div>
+	</div>
+	<div class="recent-car single-car wow fadeIn" data-wow-delay="0.5s" data-wow-duration="1s">
+	<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="heading-content-bg wow fadeIn" data-wow-delay="0.75s" data-wow-duration="1s">
 						<div class="row">
-							<div class="heading-content col-md-12">
-								<p><a href="index-2.html">Homepage</a> / <em> Cars</em> / <em> Car Details</em></p>
-								<h2>Car <em>Details</em></h2>
+							<div class="heading-content col-md-12"> 
+								<h2>Car Details</h2>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
+</div>
+<br>
 	<div class="recent-car single-car wow fadeIn" data-wow-delay="0.5s" data-wow-duration="1s">
 		<div class="container">
-			<div class="recent-car-content">
+			<div class="recent-car-content" style="width:40%">
 				<div class="row">
-					<div class="col-md-6">
+
+				 
+				
+					<div class="col-md-12">
 						<div id="single-car" class="slider-pro">
 							<div class="sp-slides">
 
@@ -177,40 +150,35 @@ $result = mysqli_query($mysqli, "SELECT * FROM car WHERE Id=".$carId);
 							</div>
 					    </div>
 					</div>
-					<div class="col-md-6">
+
+					<div class="col-md-12">
 						<div class="car-details">
-							<?php
+						<?php
 
 while($data = mysqli_fetch_array($result)) { 
 						echo '<h4>'.$data['Make'].'</h4>';
 
-}
-							?>
-							<span>$45.000</span>
-							<p>Tattooed fashion axe Blue Bottle butcher tilde. Pitchfork leggings meh Odd Future.Drinking vinegar hoodie street art, selvage you probably haven't heard of them put a bird on it semiotis heirloom four loko roof.</p>
-							<div class="container">
+
+						echo '	<span>Vehicle Description</span>';
+						echo '	<p>'.$data['Description'].' </p>';
+						echo '	<div class="container">
 								<div class="row">
-									<ul class="car-info col-md-6">
-										<li><i class="flaticon flaticon-calendar"></i><p>2016/2017</p></li>
-										<li><i class="flaticon flaticon-speed"></i><p>240p/h</p></li>
-										<li><i class="flaticon flaticon-road"></i><p>20.000km - 40.000km</p></li>
-										<li><i class="flaticon flaticon-fuel"></i><p>Diesel</p></li>
-									</ul>
-									<ul class="car-info col-md-6">
-										<li><i class="flaticon flaticon-art"></i><p>White</p></li>
-										<li><i class="flaticon flaticon-shift"></i><p>Automatic</p></li>
-										<li><i class="flaticon flaticon-car"></i><p>4/5</p></li>
-										<li><i class="flaticon flaticon-motor"></i><p>3000cm3</p></li>
-									</ul>
+								<span>Vehicle Information</span>
+									<ul class="car-info col-md-12">';
+									echo '		<li><i class="flaticon " style="color:white">Year </i> : &nbsp &nbsp <p>' .$data['Year']. '</p></li>';
+									echo '	<li><i class="flaticon" style="color:white">Make</i> : &nbsp &nbsp<p>' .$data['Make']. '</p></li>';
+									echo '	<li><i class="flaticon " style="color:white">Model</i> : &nbsp &nbsp<p>' .$data['Model']. '</p></li>';
+									echo '	<li><i class="flaticon" style="color:white">Owner</i> : &nbsp &nbsp<p>' .$data['Owner']. '</p></li>';
+									echo '	</ul>
+								 
 								</div>
 							</div>
-							<div class="similar-info">
-								<div class="primary-button">
-									<a href="#">Add Offer <i class="fa fa-dollar"></i></a>
-								</div>
-							</div>
+							 
 						</div>
-					</div>
+					</div>';
+				}
+				?>
+
 				</div>
 			</div>
 		</div>

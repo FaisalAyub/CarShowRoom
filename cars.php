@@ -6,7 +6,7 @@ include_once("config.php");
  
 $categoryId = $_GET['id'];
 // Fetch all users data from database
-$result = mysqli_query($mysqli, "SELECT * FROM Car INNER JOIN carcategory CC ON CC.CarId = CAr.Id INNER JOIN category C ON C.Id = CC.CategoryId where C.ID =".$categoryId);
+$result = mysqli_query($mysqli, "SELECT Car.Year,Car.Make,Car.Model,Car.Owner,Car.Id as CarId,Car.LocatedSpace,Car.Description,Car.Thumbnil FROM Car INNER JOIN carcategory CC ON CC.CarId = Car.Id INNER JOIN category C ON C.Id = CC.CategoryId where C.ID=".$categoryId);
 
 ?>
 
@@ -67,77 +67,44 @@ $result = mysqli_query($mysqli, "SELECT * FROM Car INNER JOIN carcategory CC ON 
 	        <button type="submit" class="primary-button"><a href="#">Search <i class="fa fa-search"></i></a></button>
 	    </form>
 	</div>
-	
 	<header class="site-header wow fadeIn" data-wow-duration="1s">
-		<div id="main-header" class="main-header">
-			<div class="container clearfix">
-				 
-				<div id='cssmenu'>
-					<ul>
-					   	<li><a href='index-2.html'>Homepage</a></li>
-					   	<li class='active'><a href='#'>Car Listing</a>
-					      	<ul>
-					         	<li><a href='#'>Sidebar</a>
-					            	<ul>
-					               		<li><a href='car_listing_sidebar.html'>Car Listing</a></li>
-					               		<li><a href='car_grid_sidebar.html'>Car Grid</a></li>
-					            	</ul>
-					        	</li>
-					         	<li><a href='#'>No Sidebar</a>
-					            	<ul>
-					               		<li><a href='car_listing_no_sidebar.html'>Car Listing</a></li>
-					               		<li><a href='car_grid_no_sidebar.html'>Car Grid</a></li>
-					            	</ul>
-					         	</li>
-					         	<li><a href="single_car.html">Single Car</a></li>
-					      	</ul>
-					   	</li>
-					   	<li class='active'><a href='#'>Blog</a>
-					      	<ul>
-					         	<li><a href='#'>Sidebar</a>
-					            	<ul>
-					               		<li><a href='blog_listing_sidebar.html'>Blog Classic</a></li>
-					               		<li><a href='blog_grid_sidebar.html'>Blog Grid</a></li>
-					            	</ul>
-					         	</li>
-					         	<li><a href='#'>No Sidebar</a>
-					            	<ul>
-					               		<li><a href='blog_listing_no_sidebar.html'>Blog Classic</a></li>
-					               		<li><a href='blog_grid_no_sidebar.html'>Blog Grid</a></li>
-					            	</ul>
-					         	</li>
-					         	<li><a href="single_post.html">Single Post</a></li>
-					      	</ul>		
-					   </li>
-					   <li><a href='about_us.html'>About Us</a></li>
-					   <li><a href='contact_us.html'>Contact Us</a></li>
-					   <li>
-					   		<a href="#search"><i class="fa fa-search"></i></a>
-					   </li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</header>
+        <div id="main-header" class="main-header" style="background-color:#c51313ba">
+            <div class="container clearfix">
+
+                <div id='cssmenu'>
+                    <ul>
+                        <li><a href='index-2.php'>Home</a></li>
+                        <li class='active'><a href='#'>About</a></li>
+                        <li><a href='#'>Map</a></li>
+                        <li><a href='#'>Sponsores</a></li> 
+                        <li><a href='#'>Contact </a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
 
 
 	<div class="page-heading wow fadeIn" data-wow-duration="0.5s">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="heading-content-bg wow fadeIn" data-wow-delay="0.75s" data-wow-duration="1s">
-						<div class="row">
-							<div class="heading-content col-md-12">
-								<p><a href="index-2.html">Homepage</a> / <em> Cars</em> / <em> Listing</em></p>
-								<h2>Cars <em>Listing</em></h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div class="container" style="height:400px">
+		 
 		</div>
 	</div>
-
+    <div class="container" style="margin-bottom:1%" >
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="heading-content-bg wow fadeIn" data-wow-delay="0.75s" data-wow-duration="1s">
+                        <div class="row">
+                            <div class="heading-content col-md-12"> 
+                                <h2>Cars  Listing </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+		
 	<div class="on-listing wow fadeIn" data-wow-delay="0.5s" data-wow-duration="1s">
 		<div class="container">
 			<div class="recent-car-content">
@@ -154,8 +121,8 @@ while($data = mysqli_fetch_array($result)) {
 										<div class="col-md-5">
 											<div class="thumb-content">
 												 
-												<div class="thumb-inner">
-													<a href="single_car.html"><img src="assets/images/car_listing_1.jpg" alt=""></a>
+												<div class="thumb-inner">';
+												echo	'<a href="single_car.php?id='.$data['CarId'].'"><img src="assets/images/car_listing_1.jpg" alt=""></a>
 												</div>
 											</div>
 										</div>
