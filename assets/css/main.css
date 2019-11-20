@@ -36,12 +36,17 @@ body {
     background-color: #c51213;
     border-color: #c51213;
 }
-
+.contact-content .send-message input{
+	padding: 0px !important;
+}
 .btn-primary:hover{
 	
 	color: #fff;
     background-color: #c51213ab;
     border-color:#c51213ab;
+}
+.row{
+	margin-bottom: 25px;
 }
 a {
     text-decoration: none!important

@@ -6,6 +6,7 @@ $year = filter_input(INPUT_POST, 'year');
 $owner = filter_input(INPUT_POST, 'owner'); 
 $description = filter_input(INPUT_POST, 'description'); 
 $isJuged=filter_input(INPUT_POST, 'isJuged'); 
+$thumbnilFile= $_FILES["thumbnilFile"]["name"]; 
 // $my_file=filter_input(INPUT_POST, 'my_file'); 
 ?>
 
@@ -30,41 +31,47 @@ body{background-color:#f4f9fa}
 <div class="container">
 <div class="header">  
 
-<?php
-            if (isset($_FILES['my_file'])) {
-                $myFile = $_FILES['my_file'];
-                $fileCount = count($myFile["name"]);
-                $uploads_dir = '/assets/categoryImages';
-                for ($i = 0; $i < $fileCount; $i++) {
-                    $name=$_FILES["my_file"]["name"][$i];
-                    $temporaryName=$_FILES["my_file"]["tmp_name"][$i];
-                    ?>
-                        <p>File #<?= $i+1 ?>:</p>
-                        <p>
-                            Name: <?= $_FILES["my_file"]["name"][$i] ?><br>
-                            Temporary file: <?= $_FILES["my_file"]["tmp_name"][$i] ?><br>
-                            Type: <?= $myFile["type"][$i] ?><br>
-                            Size: <?= $myFile["size"][$i] ?><br>
-                            Error: <?= $myFile["error"][$i] ?><br>
-                        </p>
-                        
-                    <?php
-                     move_uploaded_file($temporaryName, "$uploads_dir/$name");
-                }
-            }
-        ?>
+
 
 
 <?php 
  
 // Fetch all users data from database
-$temp= "INSERT INTO `car`( `Year`, `Make`, `Model`, `Owner`, `Description`, `LocatedSpace`, `Thumbnil`, `IsJuged`) VALUES ('$year','$make','$model','$owner','$description','0','image1','$isJuged');";
+$temp= "INSERT INTO `car`( `Year`, `Make`, `Model`, `Owner`, `Description`, `LocatedSpace`, `Thumbnil`, `IsJuged`) VALUES ('$year','$make','$model','$owner','$description','0','$thumbnilFile','$isJuged');";
 echo $temp;
 $result = mysqli_query($mysqli,$temp);
 
 if($result){
     
 $carId= $mysqli->insert_id; 
+
+// insert multiples file against one CarID
+if (isset($_FILES['my_file'])) {
+    $myFile = $_FILES['my_file'];
+    $fileCount = count($myFile["name"]);
+    $uploads_dir = 'assets/images/';
+    for ($i = 0; $i < $fileCount; $i++) {
+        $name=$_FILES["my_file"]["name"][$i];
+        $temporaryName=$_FILES["my_file"]["tmp_name"][$i];        
+        
+        $fileUploadQuery= "INSERT INTO `images`( `Name`, `CarId`) VALUES ('$name','$carId');";
+        
+        $response = mysqli_query($mysqli,$fileUploadQuery);
+
+
+         move_uploaded_file($temporaryName, "$uploads_dir$name");
+    }
+}
+
+if(isset($_FILES["thumbnilFile"]["name"])){
+    $uploadsThumb_dir = 'assets/images/';
+    $target_dir = "assets/images/"; 
+    $target_file = $target_dir . basename($_FILES["thumbnilFile"]["name"]); 
+    move_uploaded_file($_FILES["thumbnilFile"]["tmp_name"],  $target_file);
+}
+
+
+
 
 if(!empty($_POST['check_list'])) {
     foreach($_POST['check_list'] as $categoryId) {

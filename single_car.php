@@ -7,6 +7,8 @@ $carId = $_GET['id'];
 // Fetch all users data from database
 $result = mysqli_query($mysqli, "SELECT * FROM car WHERE Id=".$carId);
 
+$carImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=".$carId);
+$thumbImages= mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=".$carId);
 ?>
 
 
@@ -112,41 +114,29 @@ $result = mysqli_query($mysqli, "SELECT * FROM car WHERE Id=".$carId);
 		<div class="container">
 			<div class="recent-car-content">
 				<div class="row">
-
-				 
-				
+ 
 					<div class="col-md-12">
 						<div id="single-car" class="slider-pro">
 							<div class="sp-slides">
+							<?php
 
-								<div class="sp-slide">
-									<img class="sp-image" src="assets/images/car_slide_1.jpg" style="width:1000px" alt="" />
-								</div>
-
-						        <div class="sp-slide">
-						        	<img class="sp-image" src="assets/images/car_slide_2.jpg" alt="" />
-								</div>
-
-								<div class="sp-slide">
-									<img class="sp-image" src="assets/images/car_slide_3.jpg" alt="" />
-								</div>
-
-								<div class="sp-slide">
-									<img class="sp-image" src="assets/images/car_slide_4.jpg" alt="" />
-								</div>
-
-								<div class="sp-slide">
-									<img class="sp-image" src="assets/images/car_slide_5.jpg" alt="" />
-								</div>
+while($car = mysqli_fetch_array($carImages)) { 
+							echo '	<div class="sp-slide">';
+							echo	'	<img class="sp-image" src="assets/images/'.$car['Name'].'" style="width:1000px" alt="" />
+								</div>';
+}
+?>
+						     
 
 							</div>
 
 							<div class="sp-thumbnails">
-								<img class="sp-thumbnail" src="assets/images/car_thumb_1.jpg" alt="" />
-								<img class="sp-thumbnail" src="assets/images/car_thumb_2.jpg" alt="" />
-								<img class="sp-thumbnail" src="assets/images/car_thumb_3.jpg" alt="" />
-								<img class="sp-thumbnail" src="assets/images/car_thumb_4.jpg" alt="" />
-								<img class="sp-thumbnail" src="assets/images/car_thumb_5.jpg" alt="" />
+							<?php
+
+while($car1 = mysqli_fetch_array($thumbImages)) { 
+							echo	'<img class="sp-thumbnail" src="assets/images/'.$car1['Name'].'" alt="" />';
+							}
+							?> 
 							</div>
 					    </div>
 					</div>
@@ -155,7 +145,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM car WHERE Id=".$carId);
 						<div class="car-details">
 						<?php
 
-while($data = mysqli_fetch_array($result)) { 
+				while($data = mysqli_fetch_array($result)) { 
 						echo '<h4>'.$data['Make'].'</h4>';
 
 

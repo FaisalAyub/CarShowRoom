@@ -44,7 +44,7 @@ echo "<a href=''>";
 											<div class="thumb-content">
 												 
 												<div class="thumb-inner">';
-												echo	'<a href="single_car.php?id='.$data['CarId'].'"><img src="assets/images/car_listing_1.jpg" alt=""></a>
+												echo	'<a href="single_car.php?id='.$data['CarId'].'"><img src="assets/images/'.$data['Thumbnil'].'" alt=""></a>
 												</div>
 											</div>
 										</div>
