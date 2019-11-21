@@ -1,19 +1,114 @@
 
-
 <?php
 // Create database connection using config file
 include_once("config.php");
  
 $categoryId = $_GET['id'];
 // Fetch all users data from database
-$result = mysqli_query($mysqli, "SELECT Car.Year,Car.Make,Car.Model,Car.Owner,Car.Id as CarId,Car.LocatedSpace,Car.Description,Car.Thumbnil FROM Car INNER JOIN carcategory CC ON CC.CarId = Car.Id INNER JOIN category C ON C.Id = CC.CategoryId where C.ID=".$categoryId);
+$result = mysqli_query($mysqli, "SELECT Car.* FROM Car INNER JOIN carcategory CC ON CC.CarId = Car.Id INNER JOIN category C ON C.Id = CC.CategoryId where C.ID=".$categoryId);
 
 ?>
 
 <?php include("header.php");?>
 
 
-    <div class="container" style="margin-bottom:1%" >
+
+<div class="page-content">
+        <!-- inner page banner -->
+        <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(assets/images/page_heading.jpg);">
+            <div class="container">
+                <div class="dlab-bnr-inr-entry">
+                    <h1 class="text-white">Car Listing</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="#">Home</a></li>
+                    <li>Car Listing</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <div class="section-full content-inner bg-white">
+            <div class="container">
+                <div class="row">
+         
+                    <div class="col-sm-12">
+                        <div class="row">
+							
+                            <!-- blog grid  -->
+                            <div class="dlab-blog-grid-3">
+                                <div class="col-md-12">
+<?php while($data = mysqli_fetch_array($result)) { ?>
+
+                                    <div class="blog-post blog-md clearfix date-style-2 list-view m-b30">
+										<div class="dlab-post-media dlab-img-effect zoom-slow"> 
+											<a href="#"><img src="<?php echo $data["Thumbnil"]?>" onerror="this.src='https://via.placeholder.com/250'" alt="" /></a> 
+										</div>
+										<div class="dlab-post-info">
+											<div class="dlab-post-title ">
+												<h3 class="post-title"><a href="single_car.php?id=<?php echo $data["Id"]?>"><?php $data["Name"]?></a></h3>
+											</div>
+											<div class="dlab-post-text">
+												<p><?php echo $data["Description"]?></p>
+											</div>
+											<div class="dlab-post-readmore"> 
+												<!-- <h2 class="m-a0 pull-left m-r15 open-sans">$ 2.41 Lakh</h2> -->
+												<a href="single_car.php?id=<?php echo $data["Id"]?>" title="READ MORE" rel="bookmark" class="site-button">DETAILS</a> 
+											</div>
+											<div class="dlab-post-tags">
+												<div class="post-tags"> 
+												<a href="#">Make <?php echo $data['Make'] ?></a> 
+												<a href="#">Owner <?php echo $data['Owner'] ?></a> 
+												<a href="#">Year <?php echo $data['Year'] ?></a> 
+												<a href="#">Model <?php echo $data['Model'] ?></a> 
+													
+											
+												</div>
+											</div>
+											<br />
+											<div class="dlab-post-text">
+												<div class="text-success">
+												<p>Located in Space <?php echo $data["LocatedSpace"];?>
+												</p>
+</div>
+											</div>
+										</div>
+									</div>
+
+
+<?php }?>
+								
+                                </div>
+								
+                            </div>
+                        
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+ 
+<?php include("footer.php");?>
+
+
+
+
+
+
+<div class="container" style="margin-bottom:1%" >
 	<div class="heading-content-bg wow fadeIn" data-wow-delay="0.75s" data-wow-duration="1s">
                         <div class="row">
                             <div class="heading-content col-md-12"> 
@@ -82,6 +177,3 @@ echo "<a href=''>";
 			</div>
 		</div>
 	</div>
-
- 
-<?php include("footer.php");?>
