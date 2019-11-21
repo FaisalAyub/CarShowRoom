@@ -39,85 +39,67 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 		<div class="section-full p-t50 bg-white content-inner-2">
 			<div class="container">
 				<div class="row">
-					<!-- Side bar start -->
-					<div class="col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
 						<div class="m-b30">
 							<h3 class="h3 m-t0"> <?php echo $data["Name"] ?> </h3>
 							<ul class="used-car-dl-info">
 
 							</ul>
 						</div>
-						<div class="owl-fade-one owl-carousel owl-btn-center-lr owl-loaded owl-drag">
 
-							<div class="owl-stage-outer">
-								<div class="owl-stage" style="transform: translate3d(-3200px, 0px, 0px); transition: all 0s ease 0s; width: 6400px;">
-									<?php while ($car = mysqli_fetch_array($carImages)) { ?>
-									
-										<div class="owl-item cloned" style="width: 770px; margin-right: 30px;">
+						<div class="owl-fade-one owl-carousel owl-btn-center-lr">
 
-											<div class="item">
-												<div class="dlab-thum-bx"> <img src="<?php echo $car['Name'] ?>" alt=""> </div>
-											</div>
-										</div>
-									<?php } ?>
+							<?php while ($car = mysqli_fetch_array($carImages)) { ?>
 
-
+								<div class="item">
+									<div class="dlab-thum-bx"> <img src="<?php echo $car["Name"] ?>" alt=""> </div>
 								</div>
-							</div>
-							<div class="owl-nav">
-								<div class="owl-prev"><i class="fa fa-angle-left"></i></div>
-								<div class="owl-next"><i class="fa fa-angle-right"></i></div>
-							</div>
-							<div class="owl-dots disabled"></div>
+
+							<?php } ?>
+
+
 						</div>
+
+						<div class="owl-thumbs" data-slider-id="1">
+
+							<?php while ($car = mysqli_fetch_array($carImages)) { ?>
+								<button class="owl-thumb-item">slide 1</button>
+							
+							<?php } ?>
+						</div>
+
+
 
 						<div class="clearfix m-t30">
 
 							<div class="dlab-tabs">
 								<div id="economy" class="tab-pane active clearfix city-list">
 									<div class="icon-bx-wraper bx-style-1 p-a30">
+
+										<div class="row">
+											<Label>Vehicle Description</label>
+											<p><?php $data["Description"]?></p>
+										</div>
 										<ul class="table-dl clearfix">
 											<li>
-												<div class="leftview">Mileage</div>
-												<div class="rightview">17.20 kmpl</div>
+												<div class="leftview">Year</div>
+												<div class="rightview"><?php echo $data["Year"] ?></div>
 											</li>
 											<li>
-												<div class="leftview">Service Cost</div>
-												<div class="rightview">-</div>
+												<div class="leftview">Make</div>
+												<div class="rightview"><?php echo $data["Make"] ?></div>
 											</li>
 											<li>
-												<div class="leftview">Fuel Type</div>
-												<div class="rightview">Diesel</div>
+												<div class="leftview">Model</div>
+												<div class="rightview"><?php echo $data["Model"] ?></div>
 											</li>
 											<li>
-												<div class="leftview">Fuel Tank</div>
-												<div class="rightview">58 Litres</div>
+												<div class="leftview">Owner</div>
+												<div class="rightview"><?php echo $data["Owner"] ?></div>
 											</li>
 
-											<li>
-												<div class="leftview">Mileage</div>
-												<div class="rightview">17.20 kmpl</div>
-											</li>
-											<li>
-												<div class="leftview">Over Drive</div>
-												<div class="rightview">4 Motion</div>
-											</li>
-											<li>
-												<div class="leftview">Steering Type</div>
-												<div class="rightview">Electric</div>
-											</li>
-											<li>
-												<div class="leftview">Turning Radius</div>
-												<div class="rightview">5.75meters</div>
-											</li>
-											<li>
-												<div class="leftview">Alloy Wheel Size</div>
-												<div class="rightview">18 Inch</div>
-											</li>
-											<li>
-												<div class="leftview">No Of Doors</div>
-												<div class="rightview">5</div>
-											</li>
+
 										</ul>
 									</div>
 								</div>
@@ -154,6 +136,9 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 							</div>
 						</div>
 					</div>
+
+
+					<div class="col-md-1"></div>
 					<!-- Side bar END -->
 
 				</div>
