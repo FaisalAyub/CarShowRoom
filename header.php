@@ -71,18 +71,18 @@
     </div>
 
     <header class="site-header wow fadeIn" data-wow-duration="1s">
-        <div id="main-header" class="main-header" style="background-color:#c51313ba">
+        <div id="main-header" class="main-header" style="background-color:#545050">
             <div class="container clearfix">
 
                 <div id='cssmenu'>
                     <ul>
-                        <li><a href='index.php'>Home</a></li>
-                        <li ><a href='about.php'>About</a></li>
-                        <li><a href='map.php'>Map</a></li>
-                        <li><a href='sponsors.php'>Sponsores</a></li> 
-                        <li><a href='contact_us.php'>Contact </a></li>
-                        <li><a href='login.php'>Login </a></li>
-                        
+                        <li><a href='index.php'><b>Home</b></a></li>
+                        <li ><a href='about.php'><b>About</b></a></li>
+                        <li><a href='map.php'><b>Map</b></a></li>
+                        <li><a href='sponsors.php'><b>Sponsores</b></a></li> 
+                        <li><a href='contact_us.php'><b>Contact</b> </a></li>
+                        <!-- <li><a href='login.php'>Login </a></li>
+                         -->
                     </ul>
                 </div>
             </div>

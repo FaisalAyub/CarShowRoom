@@ -87,7 +87,7 @@
 <script src="assets/js/sliderpro.min.js"></script>
 
 <!-- Slick Slider Js -->
-<script src="assets/js/slick.js"></script>
+<!-- <script src="assets/js/slick.js"></script> -->
 
 <!-- Owl Carousel Js -->
 <script src="assets/js/owl.carousel.min.js"></script>
