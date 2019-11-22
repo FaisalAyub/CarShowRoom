@@ -1,34 +1,50 @@
 <?php
 
 $result = 0;
-$message="";
+$message = "";
 if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
     try {
         $message = array();
+
+
         $message["Name"] = $_POST["Name"];
         $message["Email"] = $_POST["Email"];
         $message["Phone"] = $_POST["Phone"];
         $message["Subject"] = $_POST["Subject"];
         $message["Message"] = $_POST["Message"];
 
-        $to = "zetawars@hotmail.com";
+
+        echo $message["Name"];
+        echo $message["Email"];
+        echo $message["Phone"];
+        echo $message["Subject"];
+        echo $message["Message"];
+
+        $message = $_POST["dzEmail"];
+        echo $message;
+
+
+
+
+        $r = mail($to, $subject, $txt);
+
+        $to = "eazisol@gmail.com";
+
         $subject = $message["Subject"];
-        $txt = "Email : " . $message["Email"] . ". Phone : " . $message["Phone"] . "<br>" . $message["Message"];
-        $headers = "From: webmaster@example.com" . "\r\n" . "CC: zetawars@hotmail.com";
-        $r = @mail($to, $subject, $txt, $headers);
-        if($r){
+        $txt =  wordwrap("Email : " . $message["Email"] . ". Phone : " . $message["Phone"] . "<br>" . $message["Message"], 70);
+
+
+        $r = mail($to, $subject, $txt);
+        if ($r) {
             $result = 1;
-            $message="Successfully sent";
-        }else
-        {
+            $message = "Successfully sent";
+        } else {
             $result = 2;
-            $message="Technical Error while sending the application";
-    
+            $message = "Technical Error while sending the application";
         }
-       
-    } catch (Exception $ex) { 
+    } catch (Exception $ex) {
         $result = 2;
-        $message="Technical Error while sending the application";
+        $message = "Technical Error while sending the application";
     }
 }
 ?>
@@ -163,34 +179,29 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
 
 <script>
+    <?php if ($result != 0) { ?>
+
+        <?php if ($result == 1) { ?>
+            $.toast({
+                heading: 'Success',
+                text: '<?php echo $message ?>',
+                showHideTransition: 'slide',
+                icon: 'success'
+            });
 
 
 
-<?php if ($result != 0) { ?>
+        <?php } else { ?>
+            $.toast({
+                heading: 'Error',
+                text: '<?php echo $message ?>',
+                showHideTransition: 'fade',
+                icon: 'error'
+            })
 
-<?php if ($result == 1) { ?>
-    $.toast({
-        heading: 'Success',
-        text: '<?php echo $message ?>',
-        showHideTransition: 'slide',
-        icon: 'success'
-    });
+        <?php } ?>
 
-
-
-<?php } else { ?>
-    $.toast({
-        heading: 'Error',
-        text: '<?php echo $message ?>',
-        showHideTransition: 'fade',
-        icon: 'error'
-    })
-
-<?php } ?>
-
-<?php } ?>
-
-
+    <?php } ?>
 </script>
 
 

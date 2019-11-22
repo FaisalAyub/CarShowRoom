@@ -8,7 +8,7 @@ if ($_SESSION["Login"] != "True") {
 }
 
 
-$Query = "SELECT * FROM car";
+$Query = "SELECT * FROM car order by timestamp desc";
 $CarList = mysqli_query($mysqli, $Query);
 
 ?>
@@ -129,7 +129,7 @@ console.log(published);
                 if (resp) {
                     $.post("UpdatePublish.php", { carId: id, Publish: true }, function(result) {
                         if (result == true) {
-                            bootbox.alert("Successfully removed from Published entries", function(result) {
+                            bootbox.alert("Successfully Published", function(result) {
                                 window.location.reload();
                             });
                         }

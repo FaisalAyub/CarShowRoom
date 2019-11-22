@@ -1,14 +1,62 @@
+<?php
+
+include_once("config.php");
+
+
+$Query = "SELECT * FROM car order by timestamp desc Limit 0,3";
+
+$CarList = mysqli_query($mysqli, $Query);
+
+$result = 0;
+$message = "";
+if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
+
+  if (!@empty($_POST["dzEmail"])) {
+
+    try {
+      $message = $_POST["dzEmail"];
+      echo $message;
+
+      $to = "eazisol@gmail.com";
+      $subject = "Subscription";
+      $txt = wordwrap("Email : " . $message["Email"], 70);
+
+
+      $r = mail($to, $subject, $txt);
+      if ($r) {
+        $result = 1;
+        $message = "Successfully sent";
+      } else {
+        $result = 2;
+        $message = "Technical Error while sending the application";
+      }
+    } catch (Exception $ex) {
+      $result = 2;
+      $message = "Technical Error while sending the application";
+    }
+  }
+}
+?>
+
+
+
 <footer class="site-footer" style="display: block; height: 602px;">
   <div class="footer-top">
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-6 footer-col-4">
           <div class="widget widget_about">
-            
-          
-            <p class="m-tb20"><strong>The Town of Palm Beach and the Worth Avenue Association</strong>  presents the newest, premier automobile event in the country, the Palm Beach Concours. This event showcases high end luxury automobiles from classics to exotics and is held at one of the most enchanting resort destinations in the country</p>
+            <h4 class="m-b15 text-uppercase">About Us</h4>
+            <div class="dlab-separator bg-primary"></div>
+            <p class="m-tb20"><strong>The Town of Palm Beach and the Worth Avenue Association</strong> presents the newest, premier automobile event in the country, the Palm Beach Concours.</p>
 
-         
+            <ul class="full-social-icon clearfix">
+              <li class="fb col-md-12 col-sm-12 col-xs-12 m-b30">
+                <a href="#"><i class="fa fa-facebook"></i> Share On Facebook </a>
+              </li>
+
+            </ul>
+
           </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-6 footer-col-4">
@@ -29,48 +77,28 @@
             <h4 class="m-b15 text-uppercase">recent posts </h4>
             <div class="dlab-separator bg-primary"></div>
             <div class="widget-post-bx">
-              <div class="widget-post clearfix">
-                <div class="dlab-post-media"> <img src="images/blog/recent-blog/pic1.jpg" alt="" width="200" height="143"> </div>
-                <div class="dlab-post-info">
-                  <div class="dlab-post-header">
-                    <h5><a href="blog-single.html">Time to change...</a></h5>
-                  </div>
-                  <div class="dlab-post-meta">
-                    <ul>
-                      <li class="post-author">By Admin</li>
-                      <li class="post-comment"><i class="fa fa-comments"></i> 28</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="widget-post clearfix">
-                <div class="dlab-post-media"> <img src="images/blog/recent-blog/pic2.jpg" alt="" width="200" height="160"> </div>
-                <div class="dlab-post-info">
-                  <div class="dlab-post-header">
-                    <h5><a href="blog-single.html">Time to change...</a></h5>
-                  </div>
-                  <div class="dlab-post-meta">
-                    <ul>
-                      <li class="post-author">By Admin</li>
-                      <li class="post-comment"><i class="fa fa-comments"></i> 28</li>
-                    </ul>
+
+              <?php while ($data = mysqli_fetch_array($CarList)) { ?>
+
+
+
+                <div class="widget-post clearfix">
+                  <div class="dlab-post-media"> <img src="<?php echo $data["Thumbnil"]?>" onerror="this.src='https://via.placeholder.com/200x143'" alt="" width="200" height="143"> </div>
+                  <div class="dlab-post-info">
+                    <div class="dlab-post-header">
+                      <h5><a href="blog-single.html"><?php echo $data["Name"]?></a></h5>
+                    </div>
+                    <div class="dlab-post-meta">
+                      <ul>
+                        <li class="post-author">by <?php echo $data["Owner"]?></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="widget-post clearfix">
-                <div class="dlab-post-media"> <img src="images/blog/recent-blog/pic3.jpg" alt="" width="200" height="160"> </div>
-                <div class="dlab-post-info">
-                  <div class="dlab-post-header">
-                    <h5><a href="blog-single.html">Time to change...</a></h5>
-                  </div>
-                  <div class="dlab-post-meta">
-                    <ul>
-                      <li class="post-author">By Admin</li>
-                      <li class="post-comment"><i class="fa fa-comments"></i> 28</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+
+              <?php } ?>
+              
+              
             </div>
           </div>
         </div>
@@ -79,7 +107,7 @@
             <h4 class="m-b15 text-uppercase">Newsletter </h4>
             <div class="dlab-separator bg-primary"></div>
             <p class="m-tb20">Keep up on our always evolving products features and technology. Enter your e-mail and subscribe to our newsletter.</p>
-            <form action="https://carzone.dexignlab.com/xhtml/script/mailchamp.php" method="post" class="dlab-subscribe-form dzSubscribe">
+            <form action="" method="post" class="dlab-subscribe-form dzSubscribe">
               <div class="dzSubscribeMsg"></div>
               <div class="input-group m-b15">
                 <input name="dzEmail" required="required" type="email" class="form-control" placeholder="Enter Your Email">
@@ -93,7 +121,7 @@
           </div>
         </div>
       </div>
-      <div class="clearfix">
+      <!-- <div class="clearfix">
         <ul class="full-social-icon clearfix">
           <li class="fb col-md-3 col-sm-6 col-xs-6 m-b30">
             <a href="#"><i class="fa fa-facebook"></i> Share On Facebook </a>
@@ -108,7 +136,7 @@
             <a href="#"><i class="fa fa-linkedin"></i> Linkedin | 21k </a>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- footer bottom part -->
@@ -117,9 +145,9 @@
       <div class="row">
         <div class="col-md-6 col-sm-6 text-left"> © Copyright 2019 Cars of the Palm Beach, Concours Developed By <span class="text-primary"> Easisol</span> </div>
         <div class="col-md-6 col-sm-6 text-right ">
-          <a href="page-about.html"> About Us</a> |
-          <a href="page-privacy-policy.html"> Contact Us</a> |
-          <a href="page-about.html"> Privacy Policy</a>
+          <a href="about.php"> About Us</a> |
+          <a href="map.php"> Map</a> |
+          <a href="contact_us.php"> Contact Us</a>
         </div>
       </div>
     </div>

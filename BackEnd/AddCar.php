@@ -57,7 +57,7 @@ if (!empty($_GET["id"])) {
     }
     $Car["CarCategories"] = $CarCategories;
 
-    $CarImages_data = mysqli_query($mysqli, "SELECT * FROM Images where CarId = " . $_GET["id"]);
+    $CarImages_data = mysqli_query($mysqli, "SELECT * FROM images where CarId = " . $_GET["id"]);
     $CarImages = array();
     while ($image = mysqli_fetch_array($CarImages_data)) {
         array_push($CarImages, $image["Name"]);
@@ -140,7 +140,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
             $query .= "'assets/images/" . $SubmittedCar["Thumbnail"] . "',";
         }
         if ($VideoUpload) {
-            $query .= "'assets/vids/" . $SubmittedCar["Video"] . "',";
+            $query .= "'assets/images/" . $SubmittedCar["Video"] . "',";
         }
         $query .= "'" . $SubmittedCar["IsJudged"] . "');";
 
@@ -150,7 +150,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
     } else {
 
 
-        $query = "UPDATE car SET Name = '" . $SubmittedCar["Name"] . "', Year = '" . $SubmittedCar["Year"] . "', Make= '" . $SubmittedCar["Make"] . "', Model = '" . $SubmittedCar["Model"] . "', Description = '" . $SubmittedCar["Description"] . "',";
+        $query = "UPDATE car SET Name = '" . $SubmittedCar["Name"] . "', Year = '" . $SubmittedCar["Year"] . "',  Owner= '" . $SubmittedCar["Owner"] . "',  LocatedSpace= '" . $SubmittedCar["LocatedSpace"] . "',  Make= '" . $SubmittedCar["Make"] . "', Model = '" . $SubmittedCar["Model"] . "', Description = '" . $SubmittedCar["Description"] . "',";
         if ($thumbnailUpload) {
             $query .= "Thumbnil = 'assets/images/" . $SubmittedCar["Thumbnail"] . "',";
         }
@@ -216,13 +216,14 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Advanced Form Elements
-            <small>Preview</small>
+        <?php if (!empty($_GET["id"])) { echo "Update Car Details";}else {echo "Add New Car" ;}?>
+            
+        
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Forms</a></li>
-            <li class="active">Advanced Elements</li>
+            <li class="active"><?php if (!empty($_GET["id"])) { echo "Update Car";}else {echo "Add Car" ;}?></li>
         </ol>
     </section>
 
@@ -232,10 +233,10 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
         <!-- SELECT2 EXAMPLE -->
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Add Car</h3>
+                <h3 class="box-title"><?php if (!empty($_GET["id"])) { echo "Update Car";}else {echo "Add Car" ;}?></h3>
 
 
-                
+
 
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -356,7 +357,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
                                 </div>
                                 <div class="col-md-12" id="ImagesDiv" style="min-height:150px">
                                     <?php foreach ($Car["AlbumPhotos"] as $item) { ?>
-                                        <img src="../<?php echo $item ?>" style="width:150px" />
+                                        <img src="../<?php echo $item ?>" style="width:150px" onerror="this.src='https://via.placeholder.com/150'" />
                                     <?php } ?>
                                 </div>
 
@@ -427,30 +428,6 @@ if ($result) {
     $(function() {
 
 
-        <?php if ($_GET["submitted"] == true) { ?>
-
-            <?php if ($result) { ?>
-                $.toast({
-                    heading: 'Success',
-                    text: message,
-                    showHideTransition: 'slide',
-                    icon: 'success'
-                });
-
-
-
-            <?php } else { ?>
-                $.toast({
-                    heading: 'Error',
-                    text: message,
-                    showHideTransition: 'fade',
-                    icon: 'error'
-                })
-
-            <?php } ?>
-
-        <?php } ?>
-
 
 
         $("#ThumbnailFile").change(function() { //set up a common class
@@ -461,11 +438,15 @@ if ($result) {
         });
 
 
-        $(document).on("change", "#VideoFile", function(evt) {
+        $("#VideoFile").change(function(evt) {
+            debugger;
             var $source = $('#video_here');
             $source[0].src = URL.createObjectURL(this.files[0]);
             $source.parent()[0].load();
         });
+
+
+
 
 
 
@@ -504,6 +485,34 @@ if ($result) {
 
 
 
+
+        <?php if (array_key_exists("submitted", $_GET)) { ?>
+
+            <?php if ($_GET["submitted"] == true) { ?>
+
+                <?php if ($result) { ?>
+                    $.toast({
+                        heading: 'Success',
+                        text: '<?php echo $message?>',
+                        showHideTransition: 'slide',
+                        icon: 'success'
+                    });
+
+
+
+                <?php } else { ?>
+                    $.toast({
+                        heading: 'Error',
+                        text: '<?php echo $message?>',
+                        showHideTransition: 'fade',
+                        icon: 'error'
+                    })
+
+                <?php } ?>
+
+            <?php } ?>
+
+        <?php } ?>
 
 
 

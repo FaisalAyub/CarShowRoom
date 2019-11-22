@@ -37,6 +37,9 @@
 <link rel="stylesheet" type="text/css" href="FrontEnd/plugins/revolution/v5.4.3/css/layers.css">
 <!-- Revolution Navigation Style -->
 <link rel="stylesheet" type="text/css" href="FrontEnd/plugins/revolution/v5.4.3/css/navigation.css">
+
+
+<link rel="stylesheet" type="text/css" href="FrontEnd/css/flaticon/css/flaticon.css">
 <!-- Google fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Open+Sans:300,400,600,700,800|Raleway:100,200,300,400,500,600,700,800,900|Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <link rel="stylesheet" href="BackEnd/plugins/toast/jquery.toast.min.css">
