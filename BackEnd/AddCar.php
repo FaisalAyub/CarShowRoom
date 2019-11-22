@@ -31,7 +31,7 @@ $Car = array(
 
 
 if (!empty($_GET["id"])) {
-    $data = mysqli_query($mysqli, "SELECT * FROM Car where Id =" . $_GET["id"]);
+    $data = mysqli_query($mysqli, "SELECT * FROM car where Id =" . $_GET["id"]);
 
     while ($r = mysqli_fetch_array($data)) {
         $Car = array(
@@ -127,7 +127,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
 
     if (empty($SubmittedCar["Id"])) {
-        $query = "INSERT INTO Car ( Name, Year, Make, Model, Owner, Description, LocatedSpace,";
+        $query = "INSERT INTO car ( Name, Year, Make, Model, Owner, Description, LocatedSpace,";
         if ($thumbnailUpload) {
             $query .= " Thumbnil, ";
         }
@@ -150,16 +150,16 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
     } else {
 
 
-        $query = "UPDATE Car SET Name = '" . $SubmittedCar["Name"] . "', Year = '" . $SubmittedCar["Year"] . "', Make= '" . $SubmittedCar["Make"] . "', Model = '" . $SubmittedCar["Model"] . "', Description = '" . $SubmittedCar["Description"] . "',";
+        $query = "UPDATE car SET Name = '" . $SubmittedCar["Name"] . "', Year = '" . $SubmittedCar["Year"] . "', Make= '" . $SubmittedCar["Make"] . "', Model = '" . $SubmittedCar["Model"] . "', Description = '" . $SubmittedCar["Description"] . "',";
         if ($thumbnailUpload) {
-            $query .= "Thumbnil = 'assets/images/" . $SubmittedCar["Thumbnail"] . "'";
+            $query .= "Thumbnil = 'assets/images/" . $SubmittedCar["Thumbnail"] . "',";
         }
         if ($VideoUpload) {
-            $query .= "Video = 'assets/images/" . $SubmittedCar["Video"] . "'";
+            $query .= "Video = 'assets/images/" . $SubmittedCar["Video"] . "',";
         }
-        $query .= ", IsJudged = '" . $SubmittedCar["IsJudged"] . "' Where ID = " . $SubmittedCar["Id"];
+        $query .= " IsJudged = '" . $SubmittedCar["IsJudged"] . "' Where ID = " . $SubmittedCar["Id"];
 
-        echo $query;
+
         $result = mysqli_query($mysqli, $query);
         $carId = $SubmittedCar["Id"];
     }
@@ -176,7 +176,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
         if (!empty($myFile['name'][0])) {
 
-            $fileUploadQuery = "DELETE FROM Images Where CarId =" . $carId . ";";
+            $fileUploadQuery = "DELETE FROM images Where CarId =" . $carId . ";";
             $response = mysqli_query($mysqli, $fileUploadQuery);
         }
 
@@ -206,14 +206,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
     }
 
 
-   // header("Location: AddCar.php?id=" . $carId);
-    if ($result) {
-        $message = "Successfully saved";
-        $Status = true;
-    } else {
-        $Status = false;
-        $message = '<h1>500 -&nbsp;Something went wring</h1>' . mysqli_error($mysqli);
-    }
+    header("Location: AddCar.php?id=" . $carId . "&submitted=true");
 }
 ?>
 
@@ -241,11 +234,16 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
             <div class="box-header with-border">
                 <h3 class="box-title">Add Car</h3>
 
+
+                
+
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
                 </div>
             </div>
+
+
             <!-- /.box-header -->
             <div class="box-body">
                 <form action="AddCar.php" method="post" id="CarForm" enctype="multipart/form-data">
@@ -291,8 +289,12 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
                                     <div class="form-group">
                                         <label>Juged Car</label>
                                         <br />
-                                        <input type="radio" id="inlineRadio1" value="1"  name="isJuged" <?php if ($Car["IsJudged"] == true) { echo "checked"; }?>> Yes
-                                        <input type="radio" id="inlineRadio2" value="0" name="isJuged"  <?php if ($Car["IsJudged"] == false) { echo "checked"; }?>> No
+                                        <input type="radio" id="inlineRadio1" value="1" name="isJuged" <?php if ($Car["IsJudged"] == true) {
+                                                                                                            echo "checked";
+                                                                                                        } ?>> Yes
+                                        <input type="radio" id="inlineRadio2" value="0" name="isJuged" <?php if ($Car["IsJudged"] == false) {
+                                                                                                            echo "checked";
+                                                                                                        } ?>> No
                                     </div>
                                 </div>
 
@@ -344,9 +346,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
                                 </div>
                                 <div class="col-md-6">
 
-                                    <!-- onerror="this.src='https://via.placeholder.com/150'"
-                                 -->
-                                    <img src="<?php echo '../' . $Car["Thumbnil"]; ?>" id="ThumbnailImage" style="width:150px" />
+                                    <img onerror="this.src='https://via.placeholder.com/150'" src="<?php echo '../' . $Car["Thumbnil"]; ?>" id="ThumbnailImage" style="width:150px" />
                                 </div>
                             </div>
                             <div class="row">
@@ -408,10 +408,51 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
 
 
+<?php
+
+if ($result) {
+    $message = "Successfully saved";
+    $Status = true;
+} else {
+    $Status = false;
+    $message = '<h1>500 -&nbsp;Something went wring</h1>' . mysqli_error($mysqli);
+}
+
+
+?>
+
 
 
 <script>
     $(function() {
+
+
+        <?php if ($_GET["submitted"] == true) { ?>
+
+            <?php if ($result) { ?>
+                $.toast({
+                    heading: 'Success',
+                    text: message,
+                    showHideTransition: 'slide',
+                    icon: 'success'
+                });
+
+
+
+            <?php } else { ?>
+                $.toast({
+                    heading: 'Error',
+                    text: message,
+                    showHideTransition: 'fade',
+                    icon: 'error'
+                })
+
+            <?php } ?>
+
+        <?php } ?>
+
+
+
         $("#ThumbnailFile").change(function() { //set up a common class
             readURL(this);
         });
@@ -461,32 +502,6 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
         });
 
-
-
-
-        // var message ='<?php echo $message; ?>';
-
-        // var status = '<?php echo $Status; ?>';
-
-
-        // if (status == true) {
-        //     $.toast({
-        //         heading: 'Success',
-        //         text: message,
-        //         showHideTransition: 'slide',
-        //         icon: 'success'
-        //     })
-
-
-        // } else  if (status == false){
-
-        //     $.toast({
-        //         heading: 'Error',
-        //         text: message,
-        //         showHideTransition: 'fade',
-        //         icon: 'error'
-        //     })
-        // }
 
 
 

@@ -71,6 +71,12 @@
 
         color:red;
     }
+
+    .select2-selection__choice{
+        background: #204d74 !important;
+
+
+    }
     </style>
 
 </head>

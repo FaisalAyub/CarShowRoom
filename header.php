@@ -19,7 +19,7 @@
 <!-- Favicons Icon -->
 <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 <!-- Page Title Here -->
-<title>CarZone - Car Dealer Automotive Responsive HTML5 Template</title>
+<title>Car Show - Palm Beach Concours</title>
 <!-- Mobile Specific -->
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!--[if lt IE 9]>
@@ -39,7 +39,12 @@
 <link rel="stylesheet" type="text/css" href="FrontEnd/plugins/revolution/v5.4.3/css/navigation.css">
 <!-- Google fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Open+Sans:300,400,600,700,800|Raleway:100,200,300,400,500,600,700,800,900|Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<script  href="FrontEnd/js/jquery.min.js"></script>
+<link rel="stylesheet" href="BackEnd/plugins/toast/jquery.toast.min.css">
+
+    
+<script src="FrontEnd/js/jquery.min.js"></script>
+<script src="BackEnd/plugins/toast/jquery.toast.min.js"></script>
+
 </head>
 <body id="bg" class="font-poppins home-2">
 

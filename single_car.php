@@ -39,8 +39,9 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 		<div class="section-full p-t50 bg-white content-inner-2">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-1"></div>
-					<div class="col-md-10">
+
+
+					<div class="col-md-12">
 						<div class="m-b30">
 							<h3 class="h3 m-t0"> <?php echo $data["Name"] ?> </h3>
 							<ul class="used-car-dl-info">
@@ -53,7 +54,7 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 							<?php while ($car = mysqli_fetch_array($carImages)) { ?>
 
 								<div class="item">
-									<div class="dlab-thum-bx"> <img src="<?php echo $car["Name"] ?>" alt=""> </div>
+									<div class="dlab-thum-bx"> <img style="width:100%;height:600px" src="<?php echo $car["Name"] ?>" alt=""> </div>
 								</div>
 
 							<?php } ?>
@@ -65,7 +66,7 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 
 							<?php while ($car = mysqli_fetch_array($carImages)) { ?>
 								<button class="owl-thumb-item">slide 1</button>
-							
+
 							<?php } ?>
 						</div>
 
@@ -77,9 +78,13 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 								<div id="economy" class="tab-pane active clearfix city-list">
 									<div class="icon-bx-wraper bx-style-1 p-a30">
 
-										<div class="row">
-											<Label>Vehicle Description</label>
-											<p><?php $data["Description"]?></p>
+										<div class="row" style="margin-bottom:20px">
+											<h3>Vehicle Description</h3>
+											<p><?php echo $data["Description"] ?></p>
+										</div>
+										<div class="row" style="margin-top:60px">
+											<h3>Vehicle Information</h3>
+										
 										</div>
 										<ul class="table-dl clearfix">
 											<li>
@@ -101,44 +106,32 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 
 
 										</ul>
-									</div>
-								</div>
+
+										<div class="row" style="margin-top:20px">
+											<div class="col-md-12">
+												<video style="width:100%" controls>
+													<source src="<?php echo $data["Video"] ?>" id="video_here">
+													Your browser does not support HTML5 video.
+												</video>
+
+											</div>
 
 
-							</div>
-
-						</div>
-
-						<div class="modal fade lead-form-modal" id="car-details" tabindex="-1" role="dialog">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">×</span>
-									</button>
-									<div class="modal-body clearfix">
-										<div class="pull-letf max-width-300"></div>
-										<div class="lead-form">
-											<form>
-												<h3 class="m-t0">Personal Details</h3>
-												<div class="form-group">
-													<input value="" class="form-control" placeholder="Name">
-												</div>
-												<div class="form-group">
-													<input value="" class="form-control" placeholder="Mobile Number">
-												</div>
-												<div class="clearfix">
-													<button type="button" class="btn-primary site-button btn-block">Submit </button>
-												</div>
-											</form>
 										</div>
+
 									</div>
+
 								</div>
+
+
 							</div>
+
 						</div>
+
 					</div>
 
 
-					<div class="col-md-1"></div>
+
 					<!-- Side bar END -->
 
 				</div>
@@ -223,62 +216,3 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 
 
 <?php include("footer.php"); ?>
-
-
-
-<div class="recent-car single-car wow fadeIn" data-wow-delay="0.5s" data-wow-duration="1s">
-	<div class="container">
-		<div class="recent-car-content">
-			<div class="row">
-
-				<div class="col-md-12">
-					<div id="single-car" class="slider-pro">
-						<div class="sp-slides">
-
-
-
-						</div>
-
-						<div class="sp-thumbnails">
-							<?php
-
-							while ($car1 = mysqli_fetch_array($thumbImages)) {
-								echo	'<img class="sp-thumbnail" src="assets/images/' . $car1['Name'] . '" alt="" />';
-							}
-							?>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12">
-					<div class="car-details">
-						<?php
-
-						while ($data = mysqli_fetch_array($result)) {
-							echo '<h4>' . $data['Make'] . '</h4>';
-
-
-							echo '	<span>Vehicle Description</span>';
-							echo '	<p>' . $data['Description'] . ' </p>';
-							echo '	<div class="container">
-								<div class="row">
-								<span>Vehicle Information</span>
-									<ul class="car-info col-md-12">';
-							echo '		<li><i class="flaticon " style="color:white">Year </i> : &nbsp &nbsp <p>' . $data['Year'] . '</p></li>';
-							echo '	<li><i class="flaticon" style="color:white">Make</i> : &nbsp &nbsp<p>' . $data['Make'] . '</p></li>';
-							echo '	<li><i class="flaticon " style="color:white">Model</i> : &nbsp &nbsp<p>' . $data['Model'] . '</p></li>';
-							echo '	<li><i class="flaticon" style="color:white">Owner</i> : &nbsp &nbsp<p>' . $data['Owner'] . '</p></li>';
-							echo '	</ul>
-								 
-								</div>
-							</div>
-							 
-						</div>
-					</div>';
-						}
-						?>
-
-					</div>
-				</div>
-			</div>
-		</div>

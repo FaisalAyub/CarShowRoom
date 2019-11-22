@@ -5,7 +5,7 @@
 
 <div class="page-content">
         <!-- inner page banner -->
-        <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(assets/images/page_heading.jpg);">
+        <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(FrontEnd/images/banner/bnr3.jpg);">
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
                     <h1 class="text-white">Map</h1>
@@ -18,13 +18,13 @@
             <div class="container">
                 <ul class="list-inline">
                     <li><a href="#">Home</a></li>
-                    <li><Map></Map></li>
+                    <li><Map>Map</Map></li>
                 </ul>
             </div>
         </div>
         <!-- Breadcrumb row END -->
         <!-- About -->
-		<div class="section-full p-t50 bg-white content-inner">
+		<div class="section-full p-t50 content-inner">
             <div class="container">
 				<div class="section-head text-center head-1">
 					<span class="text-primary">Map</span>

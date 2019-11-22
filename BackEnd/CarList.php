@@ -8,7 +8,7 @@ if ($_SESSION["Login"] != "True") {
 }
 
 
-$Query = "SELECT * FROM Car";
+$Query = "SELECT * FROM car";
 $CarList = mysqli_query($mysqli, $Query);
 
 ?>
