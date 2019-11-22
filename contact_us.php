@@ -3,48 +3,31 @@
 $result = 0;
 $message = "";
 if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
-    try {
-        $message = array();
 
+    if (!array_key_exists('dzEmail', $_POST)) {
+        try {
+            $message = array();
+            $message["Name"] = $_POST["Name"];
+            $message["Email"] = $_POST["Email"];
+            $message["Phone"] = $_POST["Phone"];
+            $message["Subject"] = $_POST["Subject"];
+            $message["Message"] = $_POST["Message"];
+            $to = "eazisol@gmail.com";
+            $subject = $message["Subject"];
+            $txt =  wordwrap("Email : " . $message["Email"] . ". Phone : " . $message["Phone"] . "<br>" . $message["Message"], 70);
 
-        $message["Name"] = $_POST["Name"];
-        $message["Email"] = $_POST["Email"];
-        $message["Phone"] = $_POST["Phone"];
-        $message["Subject"] = $_POST["Subject"];
-        $message["Message"] = $_POST["Message"];
-
-
-        echo $message["Name"];
-        echo $message["Email"];
-        echo $message["Phone"];
-        echo $message["Subject"];
-        echo $message["Message"];
-
-        $message = $_POST["dzEmail"];
-        echo $message;
-
-
-
-
-        $r = mail($to, $subject, $txt);
-
-        $to = "eazisol@gmail.com";
-
-        $subject = $message["Subject"];
-        $txt =  wordwrap("Email : " . $message["Email"] . ". Phone : " . $message["Phone"] . "<br>" . $message["Message"], 70);
-
-
-        $r = mail($to, $subject, $txt);
-        if ($r) {
-            $result = 1;
-            $message = "Successfully sent";
-        } else {
+            $r = @mail($to, $subject, $txt);
+            if ($r) {
+                $result = 1;
+                $message = "Successfully sent";
+            } else {
+                $result = 2;
+                $message = "Technical Error while sending the application";
+            }
+        } catch (Exception $ex) {
             $result = 2;
             $message = "Technical Error while sending the application";
         }
-    } catch (Exception $ex) {
-        $result = 2;
-        $message = "Technical Error while sending the application";
     }
 }
 ?>
@@ -178,32 +161,33 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
 
 
+
+
 <script>
-    <?php if ($result != 0) { ?>
+  <?php if ($result != 0) { ?>
 
-        <?php if ($result == 1) { ?>
-            $.toast({
-                heading: 'Success',
-                text: '<?php echo $message ?>',
-                showHideTransition: 'slide',
-                icon: 'success'
-            });
+    <?php if ($result == 1) { ?>
+      $.toast({
+        heading: 'Success',
+        text: '<?php echo $message ?>',
+        showHideTransition: 'slide',
+        icon: 'success'
+      });
 
 
 
-        <?php } else { ?>
-            $.toast({
-                heading: 'Error',
-                text: '<?php echo $message ?>',
-                showHideTransition: 'fade',
-                icon: 'error'
-            })
-
-        <?php } ?>
+    <?php } else { ?>
+      $.toast({
+        heading: 'Error',
+        text: '<?php echo $message ?>',
+        showHideTransition: 'fade',
+        icon: 'error'
+      })
 
     <?php } ?>
-</script>
 
+  <?php } ?>
+</script>
 
 
 

@@ -11,15 +11,14 @@ $result = 0;
 $message = "";
 if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
-  if (!@empty($_POST["dzEmail"])) {
-
+  if (array_key_exists('dzEmail', $_POST)) {
     try {
       $message = $_POST["dzEmail"];
       echo $message;
 
       $to = "eazisol@gmail.com";
       $subject = "Subscription";
-      $txt = wordwrap("Email : " . $message["Email"], 70);
+      $txt = wordwrap("Email : " . $message, 70);
 
 
       $r = mail($to, $subject, $txt);
@@ -37,6 +36,36 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
   }
 }
 ?>
+
+
+
+
+
+<script>
+  <?php if ($result != 0) { ?>
+
+    <?php if ($result == 1) { ?>
+      $.toast({
+        heading: 'Success',
+        text: '<?php echo $message ?>',
+        showHideTransition: 'slide',
+        icon: 'success'
+      });
+
+
+
+    <?php } else { ?>
+      $.toast({
+        heading: 'Error',
+        text: '<?php echo $message ?>',
+        showHideTransition: 'fade',
+        icon: 'error'
+      })
+
+    <?php } ?>
+
+  <?php } ?>
+</script>
 
 
 
@@ -83,22 +112,22 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
 
                 <div class="widget-post clearfix">
-                  <div class="dlab-post-media"> <img src="<?php echo $data["Thumbnil"]?>" onerror="this.src='https://via.placeholder.com/200x143'" alt="" width="200" height="143"> </div>
+                  <div class="dlab-post-media"> <img src="<?php echo $data["Thumbnil"] ?>" onerror="this.src='https://via.placeholder.com/200x143'" alt="" width="200" height="143"> </div>
                   <div class="dlab-post-info">
                     <div class="dlab-post-header">
-                      <h5><a href="blog-single.html"><?php echo $data["Name"]?></a></h5>
+                      <h5><a href="blog-single.html"><?php echo $data["Name"] ?></a></h5>
                     </div>
                     <div class="dlab-post-meta">
                       <ul>
-                        <li class="post-author">by <?php echo $data["Owner"]?></li>
+                        <li class="post-author">by <?php echo $data["Owner"] ?></li>
                       </ul>
                     </div>
                   </div>
                 </div>
 
               <?php } ?>
-              
-              
+
+
             </div>
           </div>
         </div>
@@ -107,7 +136,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
             <h4 class="m-b15 text-uppercase">Newsletter </h4>
             <div class="dlab-separator bg-primary"></div>
             <p class="m-tb20">Keep up on our always evolving products features and technology. Enter your e-mail and subscribe to our newsletter.</p>
-            <form action="" method="post" class="dlab-subscribe-form dzSubscribe">
+            <form action="" method="post" class="dlab-subscribe-form">
               <div class="dzSubscribeMsg"></div>
               <div class="input-group m-b15">
                 <input name="dzEmail" required="required" type="email" class="form-control" placeholder="Enter Your Email">
