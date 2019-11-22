@@ -38,61 +38,60 @@ $result = mysqli_query($mysqli, $query);
 		<div class="container">
 			<div class="row">
 
-				<div class="col-sm-12">
-					<div class="row">
+<div class="col-sm-2 col-md-2 col-lg-2"></div>
 
-						<!-- blog grid  -->
-						<div class="dlab-blog-grid-3">
-							<div class="col-md-12">
+			<div class="col-sm-8 col-md-8 col-lg-9">
+                        <div class="row">
+							
+                            <!-- blog grid  -->
+                            <div class="dlab-blog-grid-3">
+                                <div class="col-md-12">
+
 								<?php while ($data = mysqli_fetch_array($result)) { ?>
 
-									<div class="blog-post blog-md clearfix date-style-2 list-view m-b30">
-										<div class="dlab-post-media dlab-img-effect zoom-slow">
-											<a href="#"><img style="width:400px;height:200px;" src="<?php echo $data["Thumbnil"] ?>" onerror="this.src='https://via.placeholder.com/400x200'" alt="" /></a>
+                                    <div class="blog-post blog-md clearfix date-style-2 list-view m-b30" >
+										<div class="dlab-post-media dlab-img-effect zoom-slow" style="height:200px"> 
+											<a href="#"><img src="<?php echo $data["Thumbnil"] ?>" onerror="this.src='https://via.placeholder.com/400x200'"  alt=""></a> 
 										</div>
 										<div class="dlab-post-info">
 											<div class="dlab-post-title ">
-												<h3 class="post-title"><a href="single_car.php?id=<?php echo $data["Id"] ?>"><?php $data["Name"] ?></a></h3>
+												<h3 class="post-title"><a href="single_car.php?id=<?php echo $data["Id"] ?>"><?php echo $data["Name"] ?></a></h3>
 											</div>
 											<div class="dlab-post-text">
 												<p><?php echo $data["Description"] ?></p>
-
-												<div class="dlab-post-tags">
-													<div class="post-tags">
-														<a href="#">Make <?php echo $data['Make'] ?></a>
+											</div>
+											<div class="dlab-post-readmore"> 
+												<h2 class="m-a0 pull-left m-r15 open-sans">Located In Space : <?php echo $data["LocatedSpace"]; ?></h2>
+												<a href="#" title="READ MORE" rel="bookmark" class="site-button" data-toggle="modal" data-target="#car-details">DETAILS</a>
+												<a href="#" title="READ MORE" rel="bookmark" class="site-button" data-toggle="modal" data-target="#car-details">DETAILS</a> 
+											</div>
+											<div class="dlab-post-tags">
+												<div class="post-tags"> 
+												<a href="#">Make <?php echo $data['Make'] ?></a>
 														<a href="#">Owner <?php echo $data['Owner'] ?></a>
 														<a href="#">Year <?php echo $data['Year'] ?></a>
-														<a href="#">Model <?php echo $data['Model'] ?></a>
-													
-														<div class="text-success" style="margin-left:10px;margin-top:10px">
-															
-																Located in Space <?php echo $data["LocatedSpace"]; ?>
-															
-														</div>
-													</div>
-
+														<a href="#">Model <?php echo $data['Model'] ?></a>	
+												
 												</div>
-
 											</div>
-											<div class="dlab-post-readmore">
-												<div class="pull-right">
-													<a href="single_car.php?id=<?php echo $data["Id"] ?>" title="READ MORE" rel="bookmark" class="site-button">DETAILS</a>
-												</div>
-
-											</div>
-
 										</div>
 									</div>
 
+								<?php }?>
 
-								<?php } ?>
+									<!--Here-->
+                                </div>
+								
+								
+							
+								
+                            </div>
+					 
+							
+                        </div>
+                    </div>
 
-							</div>
-
-						</div>
-
-					</div>
-				</div>
+					
 
 			</div>
 		</div>
