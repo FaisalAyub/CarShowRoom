@@ -48,6 +48,10 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 							<ul class="used-car-dl-info">
 
 								<li><i class="fa fa-map-marker"></i> Parking Space <?php echo $data["LocatedSpace"] ?></li>
+								<li><i class="fa fa-calendar"></i> Updated on <?php  
+								$date=date_create($data["TimeStamp"]);
+								echo date_format($date,"M d");
+								?></li>
 							</ul>
 						</div>
 
@@ -59,7 +63,7 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 							<?php while ($car = mysqli_fetch_array($carImages)) { ?>
 
 								<div class="item">
-									<div class="dlab-thum-bx"> <img style="width:100%;height:462px" src="<?php echo $car["Name"] ?>" alt=""> </div>
+									<div class="dlab-thum-bx"> <img style="width:100%" src="<?php echo $car["Name"] ?>" alt=""> </div>
 								</div>
 
 							<?php } ?>
@@ -99,7 +103,7 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 								<div class="tab-content">
 									<div id="economy" class="tab-pane active clearfix city-list">
 										<div class="icon-bx-wraper bx-style-1 p-a30">
-											<?php echo $data["Description"]?>
+											<?php echo  $data["Description"]?>
 										</div>
 									</div>
 							
@@ -198,7 +202,7 @@ $thumbImages = mysqli_query($mysqli, "SELECT * FROM images WHERE CarId=" . $carI
 						</div>
 
 						<div class="widget client-logo-wg">
-							<h4 class="widget-title">Popular Cars By Brand</h4>
+							<h4 class="widget-title">Video</h4>
 							<video style="width:100%" controls>
 								<source src="<?php echo $data["Video"] ?>" id="video_here">
 								Your browser does not support HTML5 video.

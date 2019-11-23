@@ -143,7 +143,7 @@ console.log(published);
     $(".deletebtn").click(function() {
 
         var id = $(this).data("id");
-        bootbox.confirm("Are you sure you want to delete this category ?", function(result) {
+        bootbox.confirm("Are you sure you want to delete this car ?", function(result) {
             if (result) {
                 $.post("DeleteCategory.php", {
                     car_Id: id

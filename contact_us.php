@@ -12,11 +12,18 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
             $message["Phone"] = $_POST["Phone"];
             $message["Subject"] = $_POST["Subject"];
             $message["Message"] = $_POST["Message"];
-            $to = "eazisol@gmail.com";
-            $subject = $message["Subject"];
-            $txt =  wordwrap("Email : " . $message["Email"] . ". Phone : " . $message["Phone"] . "<br>" . $message["Message"], 70);
-
-            $r = @mail($to, $subject, $txt);
+          
+            // To send HTML mail, the Content-type header must be set
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            
+          	$to = "info@palmbeachconcours.com";
+            $subject = $message["Subject"]. " - pbconcourscars.com";
+            $txt =  wordwrap("<strong>Email:</strong> " . $message["Email"] . ".<br /><strong> Phone: <strong>" . $message["Phone"] . "<br><strong>Message:</strong>" . $message["Message"], 70);
+			
+          	//$txt = "<strong>Email: </strong> " . $message["Email"] . ". <strong>Phone:</strong> " . $message["Phone"] . "<br /><strong>Message</strong><br />" . $message["Message"]
+          
+          	$r = @mail($to, $subject, $txt, $headers);
             if ($r) {
                 $result = 1;
                 $message = "Successfully sent";
@@ -138,7 +145,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-sm-6 m-b30">
+                        <div class="col-md-12 col-sm-6 m-b30" style="margin-top:-40px">
                             <div class="icon-bx-wraper bx-style-1 p-a30 center">
                                 <div class="icon-xl text-primary m-b20"> <a href="#" class="icon-cell"><i class="fa fa-map-marker"></i></a> </div>
                                 <div class="icon-content">

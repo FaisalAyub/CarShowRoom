@@ -7,7 +7,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 	$Username = $_POST["Email"];
 	$Password = $_POST["Password"];
 
-	if($Username= "zetawars@hotmail.com" && $Password == "Zawar123!@#"){
+	if($Username= "admin" && $Password == "Zawar123!@#"){
 	
 		$_SESSION["Login"] = "True";
 		header("Location: BackEnd/CarList.php");
@@ -63,7 +63,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
     <form action="login.php" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" name="Email" placeholder="Email">
+        <input type="text" class="form-control" name="Email" placeholder="Username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">

@@ -90,7 +90,7 @@
                         <li><a href='index.php'><b>Home</b></a></li>
                         <li ><a href='about.php'><b>About</b></a></li>
                         <li><a href='map.php'><b>Map</b></a></li>
-                        <li><a href='sponsors.php'><b>Sponsores</b></a></li> 
+                        <li><a href='sponsors.php'><b>Sponsors</b></a></li> 
                         <li><a href='contact_us.php'><b>Contact</b> </a></li>
 
                         

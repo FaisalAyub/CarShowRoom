@@ -16,8 +16,8 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
       $message = $_POST["dzEmail"];
       echo $message;
 
-      $to = "eazisol@gmail.com";
-      $subject = "Subscription";
+      $to = "dlab-subscribe-form";
+      $subject = "Subscription - pbconcourscars.com";
       $txt = wordwrap("Email : " . $message, 70);
 
 
@@ -81,7 +81,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
             <ul class="full-social-icon clearfix">
               <li class="fb col-md-12 col-sm-12 col-xs-12 m-b30">
-                <a href="#"><i class="fa fa-facebook"></i> Share On Facebook </a>
+                <a href="https://www.facebook.com/PalmBeachConcours/"><i class="fa fa-facebook"></i> Share On Facebook </a>
               </li>
 
             </ul>
@@ -115,7 +115,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
                   <div class="dlab-post-media"> <img src="<?php echo $data["Thumbnil"] ?>" onerror="this.src='https://via.placeholder.com/200x143'" alt="" width="200" height="143"> </div>
                   <div class="dlab-post-info">
                     <div class="dlab-post-header">
-                      <h5><a href="blog-single.html"><?php echo $data["Name"] ?></a></h5>
+                      <h5><a href="single_car.php?id=<?php echo $data["Id"]?>"><?php echo $data["Name"] ?></a></h5>
                     </div>
                     <div class="dlab-post-meta">
                       <ul>

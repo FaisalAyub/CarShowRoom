@@ -135,7 +135,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
             $query .= " Video, ";
         }
 
-        $query .= " IsJudged)  VALUES ('" . $SubmittedCar["Name"] . "','" . $SubmittedCar["Year"] . "','" . $SubmittedCar["Model"] . "','" . $SubmittedCar["Owner"] . "','" . $SubmittedCar["Owner"] . "','" . $SubmittedCar["Description"] . "','" . $SubmittedCar["LocatedSpace"] . "',";
+        $query .= " IsJudged)  VALUES ('" . $SubmittedCar["Name"] . "','" . $SubmittedCar["Year"] . "','" . $SubmittedCar["Make"] . "','" . $SubmittedCar["Model"] . "','" . $SubmittedCar["Owner"] . "','" . $SubmittedCar["Description"] . "','" . $SubmittedCar["LocatedSpace"] . "',";
         if ($thumbnailUpload) {
             $query .= "'assets/images/" . $SubmittedCar["Thumbnail"] . "',";
         }
