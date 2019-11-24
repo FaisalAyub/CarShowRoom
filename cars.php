@@ -77,7 +77,7 @@ if (!empty($_GET['id'])) {
 	<div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(assets/images/page_heading.jpg);">
 		<div class="container">
 			<div class="dlab-bnr-inr-entry">
-				<h1 class="text-white">Car Listing</h1>
+				<!-- <h1 class="text-white">Car Listing</h1> -->
 			</div>
 		</div>
 	</div>

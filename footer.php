@@ -16,7 +16,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
       $message = $_POST["dzEmail"];
       echo $message;
 
-      $to = "dlab-subscribe-form";
+      $to = "info@palmbeachconcours.com";
       $subject = "Subscription - pbconcourscars.com";
       $txt = wordwrap("Email : " . $message, 70);
 

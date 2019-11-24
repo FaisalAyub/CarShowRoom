@@ -1,4 +1,22 @@
+<?php
+$meta = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" /> <meta name="viewport" content="width=1000">';
+?>
 <?php include("header.php") ?>
+
+<style>
+	@media (min-width: 768px) {
+
+		.container {
+			width: 960px;
+		}
+
+	}
+
+
+
+
+
+</style>
 
 <!--background-image:url(images/banner/bnr3.jpg);-->
 
@@ -31,10 +49,7 @@
 				<div class="dlab-separator bg-gray-dark"></div>
 				<div class="col-md-12">
 
-					<div class="row">
-						<div class="col-md-12">
-
-							<div style="position:relative" id="PAGES_CONTAINERcenteredContent" class="pc1centeredContent">
+				<div style="position:relative" id="PAGES_CONTAINERcenteredContent" class="pc1centeredContent">
 								<div style="display:none" id="PAGES_CONTAINERbg" class="pc1bg"></div>
 								<div style="position:relative" id="PAGES_CONTAINERinlineContent" class="pc1inlineContent">
 									<div style="width:100%">
@@ -739,10 +754,6 @@
 									</div>
 								</div>
 							</div>
-
-						</div>
-					</div>
-
 
 				</div>
 
