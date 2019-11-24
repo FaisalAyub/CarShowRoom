@@ -49,7 +49,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
             </div>
         </div>
         <!-- searching cars form -->
-        <div class="car-searching text-white">
+        <!-- <div class="car-searching text-white">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
@@ -63,7 +63,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
             </div>
 
 
-        </div>
+        </div> -->
         <!-- searching cars form end -->
     </div>
     <!-- Slider END -->
@@ -78,8 +78,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-head style-1 text-center" data-name="C">
-                        <div class="title-sm text-uppercase">Cars Categories</div>
-                        <h2 class="h2">Our <span class="font-weight-800">Best Offers</span></h2>
+                        <!-- <div class="title-lg text-uppercase">Cars Categories</div> -->
+                        <h2 class="h2"><span class="font-weight-800">Car Categories</span></h2>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM category");
                             <a href="cars.php?id=<?php echo $user_data["Id"] ?>">
                                 <div class="dlab-space">
                                     <div class="dlab-feed-list style-1 relative">
-                                        <div class="dlab-media" style="height:200px">
+                                        <div class="dlab-media" style="height:206px">
                                             <img style="img-responsive" src="assets/categoryImages/<?php echo $user_data["Image"] ?>" alt="" />
                                         </div>
                                         <div class="dlab-info">

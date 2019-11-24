@@ -94,7 +94,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
             <div class="dlab-separator bg-primary"></div>
             <ul>
               <li><a href="contact_us.php">Contact Us</a></li>
-              <li><a href="cars.php">Car Listing</a></li>
+              <li><a href="cars.php">All Cars</a></li>
               <li><a href="about.php">About us</a></li>
               <li><a href="map.php">Map</a></li>
               <li><a href="sponsors.pgp">Sponsors</a></li>
@@ -103,7 +103,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
         </div>
         <div class="col-md-3 col-sm-6 col-xs-6 footer-col-4">
           <div class="widget recent-posts-entry">
-            <h4 class="m-b15 text-uppercase">recent posts </h4>
+            <h4 class="m-b15 text-uppercase">recent uploads </h4>
             <div class="dlab-separator bg-primary"></div>
             <div class="widget-post-bx">
 
@@ -135,7 +135,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
           <div class="widget ">
             <h4 class="m-b15 text-uppercase">Newsletter </h4>
             <div class="dlab-separator bg-primary"></div>
-            <p class="m-tb20">Keep up on our always evolving products features and technology. Enter your e-mail and subscribe to our newsletter.</p>
+            <p class="m-tb20">Keep up on our car show. Enter your e-mail and subscribe to our newsletter.</p>
             <form action="" method="post" class="dlab-subscribe-form">
               <div class="dzSubscribeMsg"></div>
               <div class="input-group m-b15">
