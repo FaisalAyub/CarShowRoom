@@ -216,14 +216,22 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-        <?php if (!empty($_GET["id"])) { echo "Update Car Details";}else {echo "Add New Car" ;}?>
-            
-        
+            <?php if (!empty($_GET["id"])) {
+                echo "Update Car Details";
+            } else {
+                echo "Add New Car";
+            } ?>
+
+
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Forms</a></li>
-            <li class="active"><?php if (!empty($_GET["id"])) { echo "Update Car";}else {echo "Add Car" ;}?></li>
+            <li class="active"><?php if (!empty($_GET["id"])) {
+                                    echo "Update Car";
+                                } else {
+                                    echo "Add Car";
+                                } ?></li>
         </ol>
     </section>
 
@@ -233,7 +241,11 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
         <!-- SELECT2 EXAMPLE -->
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title"><?php if (!empty($_GET["id"])) { echo "Update Car";}else {echo "Add Car" ;}?></h3>
+                <h3 class="box-title"><?php if (!empty($_GET["id"])) {
+                                            echo "Update Car";
+                                        } else {
+                                            echo "Add Car";
+                                        } ?></h3>
 
 
 
@@ -452,32 +464,45 @@ if ($result) {
 
         $("#CarForm").validate({
             rules: {
-                "Name": {
+                Name: {
                     required: true,
                 },
-                "Make": {
+                Make: {
                     required: true,
                 },
-                "Model": {
+                Model: {
                     required: true,
                 },
-                "Year": {
+                Year: {
                     required: true,
                 },
-                "Owner": {
+                Owner: {
                     required: true,
                 },
-                "LocatedSpace": {
+                LocatedSpace: {
                     required: true,
+                    min : 1,
+                    remote: {
+                        url: "check-locatedSpace.php",
+                        type: "post",
+                        data: {
+                            LocatedSpace: function() {
+                                return $("#LocatedSpace").val();
+                            }
+                        },
+
+                    }
+
                 },
                 "check_list[]": {
-
                     required: true
                 }
-
-
-
-
+            },
+            messages: {
+                LocatedSpace: {
+                    remote: "There is already a car in thie parking space.",
+                    
+                }
             }
 
 
@@ -493,7 +518,7 @@ if ($result) {
                 <?php if ($result) { ?>
                     $.toast({
                         heading: 'Success',
-                        text: '<?php echo $message?>',
+                        text: '<?php echo $message ?>',
                         showHideTransition: 'slide',
                         icon: 'success'
                     });
@@ -503,7 +528,7 @@ if ($result) {
                 <?php } else { ?>
                     $.toast({
                         heading: 'Error',
-                        text: '<?php echo $message?>',
+                        text: '<?php echo $message ?>',
                         showHideTransition: 'fade',
                         icon: 'error'
                     })

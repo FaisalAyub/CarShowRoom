@@ -14,12 +14,12 @@ if (!empty($_GET['id'])) {
 
 	$categoryId = $_GET['id'];
 	
-	$query = "SELECT car.* FROM car INNER JOIN carcategory CC ON CC.CarId = car.Id  where CC.categoryId=1 AND car.Published = 1 order by car.timestamp desc";
+	$query = "SELECT car.* FROM car INNER JOIN carcategory CC ON CC.CarId = car.Id  where CC.categoryId=1 AND car.Published = 1 order by car.LocatedSpace";
 	
 	
 	$result = mysqli_query($mysqli, $query);
 } else {
-	$query = "SELECT car.* FROM car  where car.Published = 1  order by car.timestamp desc";
+	$query = "SELECT car.* FROM car  where car.Published = 1  order by car.LocatedSpace";
 	
 	
 	$result = mysqli_query($mysqli, $query);
