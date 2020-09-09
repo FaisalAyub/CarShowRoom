@@ -488,7 +488,8 @@ if ($result) {
                         data: {
                             LocatedSpace: function() {
                                 return $("#LocatedSpace").val();
-                            }
+                            },
+                        CarID : <?php echo $Car["Id"]?>
                         },
 
                     }
